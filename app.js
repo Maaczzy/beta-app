@@ -1,5 +1,5 @@
 document.getElementById('leadForm').addEventListener('submit', async function (event) {
-    event.preventDefault(); // Prevent the form from submitting normally
+    event.preventDefault();
 
     // Get form data
     const name = document.getElementById('name').value;
@@ -7,17 +7,12 @@ document.getElementById('leadForm').addEventListener('submit', async function (e
     const serviceType = document.getElementById('serviceType').value;
     const budgetRange = document.getElementById('budgetRange').value;
 
-    // Prepare data to send in the request
-    const leadData = {
-        name,
-        email,
-        serviceType,
-        budgetRange
-    };
+    // Prepare data to send
+    const leadData = { name, email, serviceType, budgetRange };
 
     try {
-        // Send a POST request to your backend API
-        const response = await fetch('https://beta.webset.mk/api/leads', {
+        // Send the data to the backend
+        const response = await fetch('/api/leads', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -37,7 +32,6 @@ document.getElementById('leadForm').addEventListener('submit', async function (e
             messageElement.style.color = 'red';
         }
     } catch (error) {
-        // Handle network or other errors
         const messageElement = document.getElementById('message');
         messageElement.textContent = `Грешка при поврзување: ${error.message}`;
         messageElement.style.color = 'red';
