@@ -17,7 +17,7 @@ document.getElementById('leadForm').addEventListener('submit', async function (e
 
     try {
         // Send a POST request to your backend API
-        const response = await fetch('http://localhost:3000/api/leads', {
+        const response = await fetch('https://beta.webset.mk/api/leads', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
